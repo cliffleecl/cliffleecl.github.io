@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cliff Lee · 個人首頁</title>
+  <meta name="description" content="Cliff Lee 的個人網站 — 軟體開發者" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 導覽列 -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="nav__logo">Cliff&nbsp;Lee</a>
+      <nav class="nav__links">
+        <a href="#about">關於我</a>
+        <a href="#skills">技能</a>
+        <a href="#projects">作品</a>
+        <a href="#contact">聯絡</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="切換深淺色">🌙</button>
+    </div>
+  </header>
+
+  <!-- 首屏 -->
+  <section class="hero" id="top">
+    <div class="container hero__inner">
+      <div class="hero__avatar">CL</div>
+      <h1 class="hero__title">嗨，我是 <span class="accent">Cliff Lee</span> 👋</h1>
+      <p class="hero__subtitle">軟體開發者 · 喜歡打造好用的東西</p>
+      <p class="hero__desc">
+        這是一段簡短的自我介紹。你可以在這裡放上你的專長領域、目前在做什麼，
+        或是一句能代表你的話。（這是範例文字，記得換掉喔！）
+      </p>
+      <div class="hero__actions">
+        <a href="#projects" class="btn btn--primary">看看作品</a>
+        <a href="#contact" class="btn btn--ghost">聯絡我</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 關於我 -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section__title">關於我</h2>
+      <p class="section__text">
+        我是一位對技術充滿熱情的開發者。這裡可以寫你的背景、經歷、
+        興趣，以及你想讓別人認識的那一面。保持簡潔、真誠就很棒。
+      </p>
+      <p class="section__text">
+        例如：目前任職於某公司，專注於後端系統與雲端架構；
+        工作之餘喜歡研究開源專案、爬山、攝影。
+      </p>
+    </div>
+  </section>
+
+  <!-- 技能 -->
+  <section class="section section--alt" id="skills">
+    <div class="container">
+      <h2 class="section__title">技能</h2>
+      <div class="tags">
+        <span class="tag">JavaScript</span>
+        <span class="tag">Python</span>
+        <span class="tag">Java</span>
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Docker</span>
+        <span class="tag">AWS</span>
+        <span class="tag">Git</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 作品 -->
+  <section class="section" id="projects">
+    <div class="container">
+      <h2 class="section__title">作品 / 專案</h2>
+      <div class="cards">
+        <article class="card">
+          <h3 class="card__title">專案一</h3>
+          <p class="card__text">簡短描述這個專案在做什麼、用了哪些技術、解決了什麼問題。</p>
+          <a href="#" class="card__link">查看 →</a>
+        </article>
+        <article class="card">
+          <h3 class="card__title">專案二</h3>
+          <p class="card__text">簡短描述這個專案在做什麼、用了哪些技術、解決了什麼問題。</p>
+          <a href="#" class="card__link">查看 →</a>
+        </article>
+        <article class="card">
+          <h3 class="card__title">專案三</h3>
+          <p class="card__text">簡短描述這個專案在做什麼、用了哪些技術、解決了什麼問題。</p>
+          <a href="#" class="card__link">查看 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 聯絡 -->
+  <section class="section section--alt" id="contact">
+    <div class="container contact">
+      <h2 class="section__title">聯絡我</h2>
+      <p class="section__text">歡迎透過以下方式找我聊聊 👇</p>
+      <div class="contact__links">
+        <a href="mailto:clifflee@igs.com.tw" class="btn btn--ghost">✉️ Email</a>
+        <a href="https://github.com/cliffleecl" class="btn btn--ghost" target="_blank" rel="noopener">🐙 GitHub</a>
+        <a href="#" class="btn btn--ghost">💼 LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Cliff Lee · 使用 GitHub Pages 架設</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
