@@ -54,10 +54,15 @@ body::before {
   inset: 0;
   z-index: -2;
   background-image:
-    linear-gradient(rgba(5, 217, 232, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 42, 109, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(5, 217, 232, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 42, 109, 0.08) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
+  animation: gridPan 6s linear infinite;
+}
+@keyframes gridPan {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 40px, 40px 0; }
 }
 body::after {
   content: "";
@@ -103,6 +108,12 @@ body::after {
   color: var(--text);
   text-decoration: none;
   text-shadow: var(--glow-cyan);
+  animation: neonFlicker 4s infinite;
+}
+@keyframes neonFlicker {
+  0%, 19%, 21%, 55%, 57%, 100% { opacity: 1; text-shadow: var(--glow-cyan); }
+  20%, 56% { opacity: 0.4; text-shadow: none; }
+  22% { opacity: 0.9; }
 }
 .nav__links { display: flex; gap: 26px; }
 .nav__links a {
@@ -348,7 +359,116 @@ body::after {
   .hero { padding: 76px 0 64px; }
 }
 
-/* 減少動態偏好 */
+/* ============================================================
+   ★ 誇張特效 EXTRA FX
+   ============================================================ */
+
+/* CRT 掃描光束：一道亮條由上往下反覆掃過整個畫面 */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(5, 217, 232, 0.12) 48%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(5, 217, 232, 0.12) 52%,
+    transparent 100%
+  );
+  height: 30%;
+  animation: scanSweep 4.5s linear infinite;
+}
+@keyframes scanSweep {
+  0% { transform: translateY(-120%); }
+  100% { transform: translateY(430%); }
+}
+
+/* 螢幕暗角 + 整體亮度抖動（CRT 味） */
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+  animation: crtFlicker 0.15s steps(2) infinite;
+}
+@keyframes crtFlicker {
+  0% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+/* 標題：週期性爆發故障（位移 + 傾斜 + 色偏） */
+.hero__title.glitch {
+  animation: titleBurst 3.2s infinite;
+}
+@keyframes titleBurst {
+  0%, 92%, 100% { transform: translate(0) skewX(0); filter: none; }
+  93% { transform: translate(-4px, 2px) skewX(8deg); filter: drop-shadow(3px 0 var(--magenta)) drop-shadow(-3px 0 var(--cyan)); }
+  95% { transform: translate(5px, -2px) skewX(-10deg); filter: drop-shadow(-4px 0 var(--cyan)) drop-shadow(4px 0 var(--magenta)); }
+  97% { transform: translate(-3px, 1px) skewX(4deg); filter: none; }
+}
+/* 讓 glitch 疊層跑更快、更明顯 */
+.glitch::before { animation-duration: 1.4s; }
+.glitch::after { animation-duration: 1.7s; }
+
+/* 副標：閃爍的方塊游標 */
+.hero__subtitle::after {
+  content: "▊";
+  margin-left: 2px;
+  color: var(--magenta);
+  animation: caretBlink 1s steps(1) infinite;
+}
+@keyframes caretBlink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* 頭像：外圈旋轉霓虹光環 */
+.hero__avatar {
+  position: relative;
+  z-index: 0;
+}
+.hero__avatar::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  z-index: -1;
+  background: conic-gradient(var(--cyan), var(--magenta), var(--purple), var(--cyan));
+  filter: blur(6px);
+  animation: ringSpin 3s linear infinite;
+}
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* 卡片 hover：短促抖動故障 */
+.card:hover {
+  animation: cardShake 0.25s steps(2) 3;
+}
+@keyframes cardShake {
+  0% { transform: translate(-4px, 2px) translateY(-5px); }
+  50% { transform: translate(4px, -2px) translateY(-5px); }
+  100% { transform: translate(0) translateY(-5px); }
+}
+
+/* 技能標籤：隨機霓虹呼吸 */
+.tag { animation: tagPulse 2.5s ease-in-out infinite; }
+.tag:nth-child(2n) { animation-delay: 0.4s; }
+.tag:nth-child(3n) { animation-delay: 0.8s; }
+@keyframes tagPulse {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 10px rgba(5, 217, 232, 0.5); }
+}
+
+/* 減少動態偏好：全部關掉 */
 @media (prefers-reduced-motion: reduce) {
-  .glitch::before, .glitch::after, .hero__avatar { animation: none; }
+  .glitch::before, .glitch::after, .hero__avatar, .hero__title.glitch,
+  html::before, html::after, .nav__logo, .hero__subtitle::after,
+  .hero__avatar::before, .tag { animation: none; }
+  html::before { display: none; }
 }
