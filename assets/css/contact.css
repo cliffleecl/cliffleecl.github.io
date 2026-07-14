@@ -1,0 +1,8 @@
+/* ============================================================
+   CONTACT · 聯絡頁專屬樣式
+   ============================================================ */
+
+/* ===== 聯絡 ===== */
+.contact { text-align: center; }
+.contact .section__title { display: inline-block; }
+.contact__links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 22px; }
