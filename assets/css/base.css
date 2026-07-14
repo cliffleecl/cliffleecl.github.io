@@ -1,0 +1,261 @@
+/* ============================================================
+   BASE · 共用樣式（變數 / reset / 導覽列 / 按鈕 / 區塊 / 頁尾 / 背景特效）
+   ⚠️ 全站共用：修改前請留意會影響所有頁面
+   ============================================================ */
+:root {
+  --bg: #05060f;
+  --bg-alt: #0a0b1e;
+  --text: #e6f7ff;
+  --text-soft: #7f8bb0;
+  --cyan: #05d9e8;
+  --magenta: #ff2a6d;
+  --purple: #a855f7;
+  --yellow: #f9f871;
+  --accent: var(--cyan);
+  --accent-soft: rgba(5, 217, 232, 0.08);
+  --border: rgba(5, 217, 232, 0.35);
+  --card: rgba(10, 11, 30, 0.7);
+  --shadow: 0 0 20px rgba(5, 217, 232, 0.25);
+  --glow-cyan: 0 0 8px var(--cyan), 0 0 20px rgba(5, 217, 232, 0.5);
+  --glow-magenta: 0 0 8px var(--magenta), 0 0 20px rgba(255, 42, 109, 0.5);
+}
+
+/* 淺色（霓虹晝）變體 */
+[data-theme="light"] {
+  --bg: #eef1ff;
+  --bg-alt: #e2e7ff;
+  --text: #14103a;
+  --text-soft: #5b5b86;
+  --accent: #d6006e;
+  --accent-soft: rgba(214, 0, 110, 0.08);
+  --border: rgba(214, 0, 110, 0.35);
+  --card: rgba(255, 255, 255, 0.75);
+  --shadow: 0 0 20px rgba(214, 0, 110, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Share Tech Mono", "Consolas", ui-monospace, monospace;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  position: relative;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* 背景：霓虹網格 + 掃描線 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(rgba(5, 217, 232, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 42, 109, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  animation: gridPan 6s linear infinite;
+}
+@keyframes gridPan {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 0 40px, 40px 0; }
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 3px
+  );
+  pointer-events: none;
+}
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== 導覽列 ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 0 15px rgba(5, 217, 232, 0.15);
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav__logo {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  color: var(--text);
+  text-decoration: none;
+  text-shadow: var(--glow-cyan);
+  animation: neonFlicker 4s infinite;
+}
+@keyframes neonFlicker {
+  0%, 19%, 21%, 55%, 57%, 100% { opacity: 1; text-shadow: var(--glow-cyan); }
+  20%, 56% { opacity: 0.4; text-shadow: none; }
+  22% { opacity: 0.9; }
+}
+.nav__links { display: flex; gap: 26px; }
+.nav__links a {
+  color: var(--text-soft);
+  text-decoration: none;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+.nav__links a:hover { color: var(--cyan); text-shadow: var(--glow-cyan); }
+.nav__links a.is-active { color: var(--cyan); text-shadow: var(--glow-cyan); }
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text);
+  transition: box-shadow 0.2s;
+}
+.theme-toggle:hover { box-shadow: var(--glow-cyan); }
+
+/* ===== 按鈕 ===== */
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  transition: transform 0.15s, box-shadow 0.2s, background 0.2s, color 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary {
+  background: var(--cyan);
+  color: #05060f;
+  box-shadow: var(--glow-cyan);
+}
+.btn--primary:hover { box-shadow: 0 0 16px var(--cyan), 0 0 32px var(--cyan); }
+.btn--ghost {
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
+}
+.btn--ghost:hover { background: var(--accent-soft); box-shadow: var(--glow-cyan); }
+
+/* ===== 區塊 ===== */
+.section { padding: 76px 0; }
+.section--alt {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.section__title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+  position: relative;
+  display: inline-block;
+  color: var(--text);
+}
+.section__title::before {
+  content: "// ";
+  color: var(--magenta);
+}
+.section__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta), transparent);
+}
+.section__text { color: var(--text-soft); margin-bottom: 14px; max-width: 660px; }
+
+/* ===== 頁尾 ===== */
+.footer {
+  padding: 34px 0;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  border-top: 1px solid var(--border);
+}
+
+/* ===== 全站背景特效（CRT） ===== */
+/* CRT 掃描光束：一道亮條由上往下反覆掃過整個畫面 */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(5, 217, 232, 0.12) 48%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(5, 217, 232, 0.12) 52%,
+    transparent 100%
+  );
+  height: 30%;
+  animation: scanSweep 4.5s linear infinite;
+}
+@keyframes scanSweep {
+  0% { transform: translateY(-120%); }
+  100% { transform: translateY(430%); }
+}
+
+/* 螢幕暗角 + 整體亮度抖動（CRT 味） */
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+  animation: crtFlicker 0.15s steps(2) infinite;
+}
+@keyframes crtFlicker {
+  0% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+/* ===== RWD（共用） ===== */
+@media (max-width: 600px) {
+  .nav__links { gap: 14px; font-size: 0.8rem; }
+}
+
+/* ===== 減少動態偏好：全部關掉 ===== */
+@media (prefers-reduced-motion: reduce) {
+  .glitch::before, .glitch::after, .hero__avatar, .hero__title.glitch,
+  html::before, html::after, .nav__logo, .hero__subtitle::after,
+  .hero__avatar::before, .tag { animation: none; }
+  html::before { display: none; }
+}
