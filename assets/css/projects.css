@@ -1,0 +1,46 @@
+/* ============================================================
+   PROJECTS · 作品頁專屬樣式
+   ============================================================ */
+
+/* ===== 作品卡片 ===== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 22px;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 26px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--magenta);
+  box-shadow: var(--glow-magenta);
+  animation: cardShake 0.25s steps(2) 3;
+}
+@keyframes cardShake {
+  0% { transform: translate(-4px, 2px) translateY(-5px); }
+  50% { transform: translate(4px, -2px) translateY(-5px); }
+  100% { transform: translate(0) translateY(-5px); }
+}
+.card__title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  color: var(--cyan);
+}
+.card__text { color: var(--text-soft); font-size: 0.92rem; margin-bottom: 18px; }
+.card__link {
+  color: var(--magenta);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.card__link:hover { text-shadow: var(--glow-magenta); }
