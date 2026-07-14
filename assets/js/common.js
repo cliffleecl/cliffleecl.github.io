@@ -6,8 +6,8 @@
 // 導覽列連結（新增 / 調整頁面時只改這裡）
 const NAV_LINKS = [
   { href: "index.html", label: "首頁" },
-  { href: "about.html", label: "關於我" },
-  { href: "skills.html", label: "技能" },
+  { href: "index.html#about", label: "關於我" },
+  { href: "index.html#skills", label: "技能" },
   { href: "projects.html", label: "作品" },
   { href: "contact.html", label: "聯絡" },
 ];
