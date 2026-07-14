@@ -8,23 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/home.css" />
 </head>
 <body>
-  <!-- 導覽列 -->
-  <header class="nav">
-    <div class="container nav__inner">
-      <a href="#top" class="nav__logo">Cliff&nbsp;Lee</a>
-      <nav class="nav__links">
-        <a href="#about">關於我</a>
-        <a href="#skills">技能</a>
-        <a href="#projects">作品</a>
-        <a href="#contact">聯絡</a>
-      </nav>
-      <button class="theme-toggle" id="themeToggle" aria-label="切換深淺色">🌙</button>
-    </div>
-  </header>
-
   <!-- 首屏 -->
   <section class="hero" id="top">
     <div class="container hero__inner">
@@ -36,83 +23,12 @@
         專長 Unity、CI&#47;CD、ClickUp，遊戲開發相關的都各沾一點。
       </p>
       <div class="hero__actions">
-        <a href="#projects" class="btn btn--primary">看看作品</a>
-        <a href="#contact" class="btn btn--ghost">聯絡我</a>
+        <a href="projects.html" class="btn btn--primary">看看作品</a>
+        <a href="contact.html" class="btn btn--ghost">聯絡我</a>
       </div>
     </div>
   </section>
 
-  <!-- 關於我 -->
-  <section class="section" id="about">
-    <div class="container">
-      <h2 class="section__title">關於我</h2>
-      <p class="section__text">我是李啓暘（Cliff Lee CL），一位遊戲開發者。</p>
-      <p class="section__text">● 十年遊戲開發經驗、七年 CI&#47;CD 經驗。</p>
-      <p class="section__text">● 專長 Unity、CI&#47;CD、ClickUp，遊戲開發相關的都各沾一點。</p>
-      <p class="section__text">● 經營粉專 Cliff Lee CL Studio，分享開發經驗與作品資訊。</p>
-    </div>
-  </section>
-
-  <!-- 技能 -->
-  <section class="section section--alt" id="skills">
-    <div class="container">
-      <h2 class="section__title">技能</h2>
-      <div class="tags">
-        <span class="tag">Unity</span>
-        <span class="tag">C#</span>
-        <span class="tag">CI/CD</span>
-        <span class="tag">ClickUp</span>
-        <span class="tag">Game Dev</span>
-        <span class="tag">Jenkins</span>
-        <span class="tag">Git</span>
-        <span class="tag">Automation</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 作品 -->
-  <section class="section" id="projects">
-    <div class="container">
-      <h2 class="section__title">作品 / 專案</h2>
-      <div class="cards">
-        <article class="card">
-          <h3 class="card__title">專案一</h3>
-          <p class="card__text">簡短描述這個專案在做什麼、用了哪些技術、解決了什麼問題。</p>
-          <a href="#" class="card__link">查看 →</a>
-        </article>
-        <article class="card">
-          <h3 class="card__title">專案二</h3>
-          <p class="card__text">簡短描述這個專案在做什麼、用了哪些技術、解決了什麼問題。</p>
-          <a href="#" class="card__link">查看 →</a>
-        </article>
-        <article class="card">
-          <h3 class="card__title">專案三</h3>
-          <p class="card__text">簡短描述這個專案在做什麼、用了哪些技術、解決了什麼問題。</p>
-          <a href="#" class="card__link">查看 →</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 聯絡 -->
-  <section class="section section--alt" id="contact">
-    <div class="container contact">
-      <h2 class="section__title">聯絡我</h2>
-      <p class="section__text">歡迎透過以下方式找我聊聊 👇</p>
-      <div class="contact__links">
-        <a href="mailto:clifflee@igs.com.tw" class="btn btn--ghost">✉️ Email</a>
-        <a href="https://github.com/cliffleecl" class="btn btn--ghost" target="_blank" rel="noopener">🐙 GitHub</a>
-        <a href="#" class="btn btn--ghost">💼 LinkedIn</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <p>© <span id="year"></span> Cliff Lee · 使用 GitHub Pages 架設</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <script src="assets/js/common.js"></script>
 </body>
 </html>
