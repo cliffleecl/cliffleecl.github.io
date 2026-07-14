@@ -129,6 +129,30 @@
 }
 .hero__actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
+/* ===== 技能標籤（首頁技能區塊） ===== */
+.tags { display: flex; flex-wrap: wrap; gap: 12px; }
+.tag {
+  background: var(--accent-soft);
+  color: var(--cyan);
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: box-shadow 0.2s, color 0.2s;
+  animation: tagPulse 2.5s ease-in-out infinite;
+}
+.tag:hover { color: var(--magenta); box-shadow: var(--glow-magenta); }
+
+/* 技能標籤：隨機霓虹呼吸 */
+.tag:nth-child(2n) { animation-delay: 0.4s; }
+.tag:nth-child(3n) { animation-delay: 0.8s; }
+@keyframes tagPulse {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 10px rgba(5, 217, 232, 0.5); }
+}
+
 /* ===== RWD ===== */
 @media (max-width: 600px) {
   .hero__title { font-size: 2rem; letter-spacing: 2px; }
