@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: "index.html", label: "首頁" },
   { href: "index.html#about", label: "關於我" },
   { href: "index.html#skills", label: "技能" },
+  { href: "index.html#talks", label: "演講" },
   { href: "projects.html", label: "作品" },
   { href: "contact.html", label: "聯絡" },
 ];
